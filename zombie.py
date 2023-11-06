@@ -29,6 +29,7 @@ class Zombie:
 
     def __init__(self):
         self.x, self.y = random.randint(1600-800, 1600), 150
+        self.size = 200
         self.load_images()
         self.frame = random.randint(0, 9)
         self.dir = random.choice([-1,1])
@@ -47,10 +48,10 @@ class Zombie:
 
     def draw(self):
         if self.dir < 0:
-            Zombie.images['Walk'][int(self.frame)].composite_draw(0, 'h', self.x, self.y, 200, 200)
+            Zombie.images['Walk'][int(self.frame)].composite_draw(0, 'h', self.x, self.y, self.size, self.size)
             draw_rectangle(*self.get_bb())
         else:
-            Zombie.images['Walk'][int(self.frame)].draw(self.x, self.y, 200, 200)
+            Zombie.images['Walk'][int(self.frame)].draw(self.x, self.y, self.size, self.size)
             draw_rectangle(*self.get_bb())
 
 
