@@ -30,6 +30,7 @@ class Zombie:
     def __init__(self):
         self.x, self.y = random.randint(1600-800, 1600), 150
         self.size = 200
+        self.collisions_cnt = 0
         self.load_images()
         self.frame = random.randint(0, 9)
         self.dir = random.choice([-1,1])
@@ -60,4 +61,4 @@ class Zombie:
 
 
     def get_bb(self):
-        return self.x - 80, self.y - 100, self.x + 80, self.y + 80
+        return self.x - 80 + (40 * self.collisions_cnt), self.y - 100 + (50 * self.collisions_cnt), self.x + 80 - (40 * self.collisions_cnt), self.y + 80 - (40 * self.collisions_cnt)
